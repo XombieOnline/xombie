@@ -1,0 +1,23 @@
+[workspace]
+
+members = [
+    "libs/block-device",
+    "libs/smoltcp-tun-tap",
+    "libs/smoltcp-user-vpn",
+    "libs/xblive",
+    "libs/xbox-sys",
+    "libs/xdvd",
+    "libs/xombie",
+    "libs/xombie-matchmaking",
+    "services/api",
+    "services/faux-dns",
+    "services/kdc",
+    "services/sg",
+    "tools/config-area-tool",
+    "tools/dvd-tool",
+    "tools/get-machine-account",
+    "tools/mem-card-tool",
+    "tools/mount-memory-card",
+    "tools/xbeeprom",
+    "tools/xbltun",
+]

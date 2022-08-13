@@ -1,0 +1,23 @@
+[package]
+name = "kerbeiros"
+description = "Kerberos client library"
+version = "0.2.2"
+authors = ["Eloy Perez  <zer1t0ps@protonmail.com>"]
+edition = "2018"
+license = "AGPL-3.0"
+repository = "https://gitlab.com/Zer1t0/kerbeiros"
+
+
+[dependencies]
+kerberos_asn1 = { version = "0.2", path = "../kerberos_asn1"}
+kerberos_ccache = { version = "0.0", path = "../kerberos_ccache"}
+kerberos_crypto = { version = "0.3", path = "../kerberos_crypto"}
+kerberos_constants = { version = "0.0", path = "../kerberos_constants"}
+
+ascii = "0.9.1"
+chrono = "0.4"
+failure = "0.1.5"
+failure_derive = "0.1.5"
+rand = "0.6.5"
+dns-lookup = "1.0"
+getset = "0.1"

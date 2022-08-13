@@ -1,0 +1,97 @@
+version: "3"
+
+services:
+    api:
+        image: xombie/userv
+        command: /opt/xombie/bin/api
+        networks:
+            - frontend
+            - backend
+        depends_on:
+            - db
+            - redis
+
+    faux_dns:
+        image: xombie/userv
+        command: /opt/xombie/bin/faux-dns --dns-port 5300
+        ports:
+            - "53:5300/udp"
+        networks:
+            - frontend
+            - backend
+        depends_on:
+            - db
+            - redis
+    
+    kdc:
+        image: xombie/userv
+        command: /opt/xombie/bin/kdc
+        ports:
+            - "88:88/udp"
+        networks:
+            - frontend
+            - backend
+        depends_on:
+            - db
+            - redis
+    
+    sg:
+        image: xombie/userv
+        command: /opt/xombie/bin/sg
+        ports:
+            - "3074:3074/udp"
+        networks:
+            - frontend
+            - backend
+        depends_on:
+            - db
+            - redis
+    
+    redis:
+        image: redis:6.2.5-alpine
+        volumes:
+            - "./healthchecks:/healthchecks"
+        healthcheck:
+            test: /healthchecks/redis.sh
+            interval: "5s"
+        ports:
+            - "6379:6379"
+        networks:
+            - backend
+
+    db:
+        image: postgres:14.0
+        environment:
+            POSTGRES_USER: "postgres"
+        volumes:
+            - "db-data:/var/lib/postgresql/data"
+            - "./healthchecks:/healthchecks"
+        healthcheck:
+            test: /healthchecks/postgres.sh
+            interval: "5s"
+        ports:
+            - "5432:5432"
+        networks:
+            - backend
+
+    nginx:
+        build:
+            context: frontend
+            dockerfile: Dockerfile
+            args:
+                REACT_APP_API_BASE_URL: http://127.0.0.1/api
+        volumes:
+            - ./nginx.conf:/etc/nginx/nginx.conf:ro
+        ports:
+            - "80:80"
+        networks:
+            - frontend
+        depends_on:
+            - api
+
+volumes:
+    db-data:
+
+networks:
+    frontend:
+    backend:

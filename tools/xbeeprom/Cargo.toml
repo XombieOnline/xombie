@@ -1,0 +1,10 @@
+[package]
+name = "xbeeprom"
+version = "0.1.0"
+edition = "2018"
+
+[dependencies]
+clap = "2"
+hex-literal = "0.3.1"
+xbox-sys = { path = "../../libs/xbox-sys" }
+xblive = { path = "../../libs/xblive" }

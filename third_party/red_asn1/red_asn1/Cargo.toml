@@ -1,0 +1,18 @@
+[package]
+name = "red_asn1"
+description = "A little library to encode/decode ASN1 DER"
+version = "0.3.5"
+authors = ["Eloy Pérez <zer1t0ps@hotmail.com>"]
+edition = "2018"
+license = "AGPL-3.0"
+repository = "https://gitlab.com/Zer1t0/red_asn1"
+documentation = "https://docs.rs/red_asn1/"
+readme = "README.md"
+
+[dependencies]
+ascii = "1"
+chrono = "0.4"
+nom = "5"
+
+[dev-dependencies]
+red_asn1_derive = { path = "../red_asn1_derive", version = "0.2" }

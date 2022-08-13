@@ -1,0 +1,19 @@
+[package]
+name = "kerberos_crypto"
+description = "Cryptography algorithms for Kerberos"
+version = "0.3.6"
+authors = ["Eloy Perez  <zer1t0ps@protonmail.com>"]
+edition = "2018"
+license = "AGPL-3.0"
+repository = "https://gitlab.com/Zer1t0/kerbeiros"
+
+
+[dependencies]
+kerberos_constants = { version = "0.0", path = "../kerberos_constants"}
+
+chrono = "0.4"
+rand = "0.6.5"
+md4 = "0.8"
+rust-crypto = "0.2"
+num = "0.2"
+failure = "0.1"

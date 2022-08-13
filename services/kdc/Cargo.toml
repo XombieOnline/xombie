@@ -1,0 +1,17 @@
+[package]
+name = "kdc"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+chrono = "0.4.19"
+clap = { version = "3.2.8", features = ["derive"] }
+hex-literal = "0.3.1"
+kerberos_asn1 = { path = "../../third_party/kerbeiros/kerberos_asn1" }
+kerberos_constants = { path = "../../third_party/kerbeiros/kerberos_constants" }
+red_asn1 = { path = "../../third_party/red_asn1/red_asn1" }
+tokio = { version = "1.12.0", features = ["full"] }
+tokio-postgres = "0.7.3"
+xblive = { path = "../../libs/xblive" }
+xbox-sys = { path = "../../libs/xbox-sys" }
+xombie = { path = "../../libs/xombie" }

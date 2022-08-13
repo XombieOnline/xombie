@@ -1,0 +1,1 @@
+pub const CLIENT_TO_SG_TICKET_NONCE: u32 = 3000;

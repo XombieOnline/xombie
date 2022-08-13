@@ -1,0 +1,19 @@
+[package]
+name = "xombie"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+chrono = "0.4.19"
+eui48 = "1.0.1"
+hex-literal = "0.3.1"
+kerberos_asn1 = { path = "../../third_party/kerbeiros/kerberos_asn1" }
+kerberos_constants = { path = "../../third_party/kerbeiros/kerberos_constants" }
+red_asn1 = { path = "../../third_party/red_asn1/red_asn1" }
+regex = "^1.0"
+serde = { version = "1.0", features = ["derive"] }
+tokio = { version = "1.12.0", features = ["full"] }
+tokio-postgres = { version = "0.7.3", features = ["with-eui48-1"] }
+toml = "^0.5"
+xblive = { path = "../xblive" }
+xbox-sys = { path = "../xbox-sys" }

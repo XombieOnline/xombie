@@ -1,0 +1,16 @@
+[package]
+name = "kerberos_asn1"
+description = "Parse/Build Kerberos ASN1 DER To/From Rust structs"
+version = "0.2.1"
+authors = ["Eloy <zer1t0ps@protonmail.com>"]
+edition = "2018"
+license = "AGPL-3.0"
+repository = "https://gitlab.com/Zer1t0/kerbeiros"
+
+[dependencies]
+kerberos_constants = { version = "0.0", path = "../kerberos_constants"}
+
+red_asn1 = { path = "../../red_asn1/red_asn1" }
+red_asn1_derive = { path = "../../red_asn1/red_asn1_derive"}
+chrono = "0.4"
+

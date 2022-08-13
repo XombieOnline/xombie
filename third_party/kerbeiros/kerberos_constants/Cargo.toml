@@ -1,0 +1,10 @@
+[package]
+name = "kerberos_constants"
+description = "Constants used by differente objects and actors of the Kerberos protocol"
+version = "0.0.9"
+authors = ["Eloy <zer1t0ps@protonmail.com>"]
+edition = "2018"
+license = "AGPL-3.0"
+repository = "https://gitlab.com/Zer1t0/kerbeiros"
+
+

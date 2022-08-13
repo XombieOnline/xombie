@@ -1,0 +1,13 @@
+image: rust
+
+test:
+  stage: test
+  variables:
+    RUSTFLAGS: "-Dwarnings"
+  script:
+  - cargo test --workspace
+
+build-doc:
+  stage: test
+  script:
+  - cargo doc --no-deps --workspace

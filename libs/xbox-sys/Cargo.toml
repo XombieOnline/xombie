@@ -1,0 +1,15 @@
+[package]
+name = "xbox-sys"
+version = "0.1.0"
+edition = "2018"
+
+[dependencies]
+bytes = { version = "^1", default-features = false }
+hex-literal = "0.3.1"
+nom = "^7"
+
+[features]
+default = ["std"]
+
+# enable support for the standard library
+std = ["bytes/std"]

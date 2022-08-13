@@ -1,0 +1,9 @@
+.vscode
+target
+**/*.rs.bk
+Cargo.lock
+
+# Files produced by emacs
+\#*\#
+*~
+.projectile

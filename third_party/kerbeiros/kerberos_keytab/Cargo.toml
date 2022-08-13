@@ -1,0 +1,15 @@
+[package]
+name = "kerberos_keytab"
+description = "Library to parse keytab kerberos files"
+version = "0.0.2"
+authors = ["Eloy Pérez <zer1t0ps@protonmail.com>"]
+edition = "2018"
+license = "AGPL-3.0"
+repository = "https://gitlab.com/Zer1t0/kerbeiros/kerberos_keytab"
+
+
+[dependencies]
+nom = "6.0"
+
+[dev-dependencies]
+kerberos_constants = { version = "0.0", path = "../kerberos_constants"}

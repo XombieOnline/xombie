@@ -1,0 +1,7 @@
+[package]
+name = "smoltcp-tun-tap"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+smoltcp-user-vpn = { path = "../smoltcp-user-vpn" }

@@ -1,0 +1,18 @@
+[package]
+name = "xblive"
+version = "0.1.0"
+edition = "2018"
+
+[dependencies]
+block-modes = "0.7.0"
+bytes = "^1"
+des = "0.6.0"
+hex-literal = "0.3.1"
+kerberos_asn1 = { path = "../../third_party/kerbeiros/kerberos_asn1" }
+kerberos_constants = { path = "../../third_party/kerbeiros/kerberos_constants" }
+log = { version = "0.4.4", default-features = false }
+nom = "^7"
+num-bigint = { version = "0.3", features = ["rand"] }
+rand = "0.7"
+rust-crypto = "^0.2"
+xbox-sys = { path = "../xbox-sys" }
