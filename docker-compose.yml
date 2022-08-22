@@ -76,9 +76,12 @@ services:
         image: postgres:14.0
         environment:
             POSTGRES_USER: "postgres"
+            POSTGRES_PASSWORD: "postgres"
+            POSTGRES_DB: "xombie"
         volumes:
             - "db-data:/var/lib/postgresql/data"
             - "./healthchecks:/healthchecks"
+            - ./db.sql:/docker-entrypoint-initdb.d/db.sql
         healthcheck:
             test: /healthchecks/postgres.sh
             interval: "5s"
