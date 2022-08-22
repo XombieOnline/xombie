@@ -12,6 +12,7 @@ services:
         depends_on:
             - db
             - redis
+        restart: always
 
     dns:
         build:
@@ -26,6 +27,7 @@ services:
         depends_on:
             - db
             - redis
+        restart: always
     
     kdc:
         build:
@@ -40,6 +42,7 @@ services:
         depends_on:
             - db
             - redis
+        restart: always
     
     sg:
         build:
@@ -54,6 +57,7 @@ services:
         depends_on:
             - db
             - redis
+        restart: always
     
     redis:
         image: redis:6.2.5-alpine
@@ -66,6 +70,7 @@ services:
             - "6379:6379"
         networks:
             - backend
+        restart: always
 
     db:
         image: postgres:14.0
@@ -81,6 +86,7 @@ services:
             - "5432:5432"
         networks:
             - backend
+        restart: always
 
     nginx:
         build:
@@ -96,6 +102,7 @@ services:
             - frontend
         depends_on:
             - api
+        restart: always
 
 volumes:
     db-data:
