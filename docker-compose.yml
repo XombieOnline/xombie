@@ -91,6 +91,21 @@ services:
             - backend
         restart: always
 
+    # pgadmin:
+    #     image: dpage/pgadmin4
+    #     environment:
+    #         PGPASSWORD: "postgres"
+    #         PGADMIN_DEFAULT_EMAIL: "admin@xombie.org"
+    #         PGADMIN_DEFAULT_PASSWORD: "xombie"
+    #     ports:
+    #         - "9443:443"
+    #         - "9080:80"
+    #     networks:
+    #         - backend
+    #     volumes:
+    #         - ./pgadmin-servers.json:/pgadmin4/servers.json
+    #         - ./pgadmin-pgpass:/pgadmin4/pgpass
+
     nginx:
         build:
             context: frontend
