@@ -2,7 +2,9 @@ version: "3"
 
 services:
     api:
-        image: xombie/userv
+        build:
+            context: .
+            target: api
         command: /opt/xombie/bin/api
         networks:
             - frontend
@@ -11,8 +13,10 @@ services:
             - db
             - redis
 
-    faux_dns:
-        image: xombie/userv
+    dns:
+        build:
+            context: .
+            target: dns
         command: /opt/xombie/bin/faux-dns --dns-port 5300
         ports:
             - "53:5300/udp"
@@ -24,7 +28,9 @@ services:
             - redis
     
     kdc:
-        image: xombie/userv
+        build:
+            context: .
+            target: kdc
         command: /opt/xombie/bin/kdc
         ports:
             - "88:88/udp"
@@ -36,7 +42,9 @@ services:
             - redis
     
     sg:
-        image: xombie/userv
+        build:
+            context: .
+            target: sg
         command: /opt/xombie/bin/sg
         ports:
             - "3074:3074/udp"
