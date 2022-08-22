@@ -2,7 +2,9 @@ version: "3"
 
 services:
     api:
-        image: xombie/userv
+        build:
+            context: .
+            target: api
         command: /opt/xombie/bin/api
         networks:
             - frontend
@@ -10,9 +12,12 @@ services:
         depends_on:
             - db
             - redis
+        restart: always
 
-    faux_dns:
-        image: xombie/userv
+    dns:
+        build:
+            context: .
+            target: dns
         command: /opt/xombie/bin/faux-dns --dns-port 5300
         ports:
             - "53:5300/udp"
@@ -22,9 +27,12 @@ services:
         depends_on:
             - db
             - redis
+        restart: always
     
     kdc:
-        image: xombie/userv
+        build:
+            context: .
+            target: kdc
         command: /opt/xombie/bin/kdc
         ports:
             - "88:88/udp"
@@ -34,9 +42,12 @@ services:
         depends_on:
             - db
             - redis
+        restart: always
     
     sg:
-        image: xombie/userv
+        build:
+            context: .
+            target: sg
         command: /opt/xombie/bin/sg
         ports:
             - "3074:3074/udp"
@@ -46,6 +57,7 @@ services:
         depends_on:
             - db
             - redis
+        restart: always
     
     redis:
         image: redis:6.2.5-alpine
@@ -58,14 +70,18 @@ services:
             - "6379:6379"
         networks:
             - backend
+        restart: always
 
     db:
         image: postgres:14.0
         environment:
             POSTGRES_USER: "postgres"
+            POSTGRES_PASSWORD: "postgres"
+            POSTGRES_DB: "xombie"
         volumes:
             - "db-data:/var/lib/postgresql/data"
             - "./healthchecks:/healthchecks"
+            - ./db.sql:/docker-entrypoint-initdb.d/db.sql
         healthcheck:
             test: /healthchecks/postgres.sh
             interval: "5s"
@@ -73,6 +89,22 @@ services:
             - "5432:5432"
         networks:
             - backend
+        restart: always
+
+    # pgadmin:
+    #     image: dpage/pgadmin4
+    #     environment:
+    #         PGPASSWORD: "postgres"
+    #         PGADMIN_DEFAULT_EMAIL: "admin@xombie.org"
+    #         PGADMIN_DEFAULT_PASSWORD: "xombie"
+    #     ports:
+    #         - "9443:443"
+    #         - "9080:80"
+    #     networks:
+    #         - backend
+    #     volumes:
+    #         - ./pgadmin-servers.json:/pgadmin4/servers.json
+    #         - ./pgadmin-pgpass:/pgadmin4/pgpass
 
     nginx:
         build:
@@ -88,6 +120,7 @@ services:
             - frontend
         depends_on:
             - api
+        restart: always
 
 volumes:
     db-data:
