@@ -9,6 +9,7 @@ use crate::client::{ClientState, PacketProcessError, ServiceMapping, forward, lo
 
 pub mod matchmaking;
 pub mod presence;
+pub mod terms_of_use;
 mod unimplemented;
 
 #[derive(Debug)]
@@ -78,7 +79,7 @@ static SERVICE_INFO: phf::Map<u32, ServiceInfo> = phf::phf_map! {
         name: "Diagnostic",
     },
     11u32 => ServiceInfo {
-        kind: ServiceKind::LocalTcp(unimplemented::new_unimplemented_connection),
+        kind: ServiceKind::LocalTcp(terms_of_use::new_terms_of_use_connection),
         id: 11,
         name: "Terms of Use",
     },
