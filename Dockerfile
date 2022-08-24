@@ -25,3 +25,4 @@ COPY --from=builder /opt/xombie-build/target/release/api /opt/xombie/bin/api
 COPY --from=builder /opt/xombie-build/target/release/kdc /opt/xombie/bin/kdc
 COPY --from=builder /opt/xombie-build/target/release/faux-dns /opt/xombie/bin/faux-dns
 COPY --from=builder /opt/xombie-build/target/release/sg /opt/xombie/bin/sg
+COPY data/motd /motd

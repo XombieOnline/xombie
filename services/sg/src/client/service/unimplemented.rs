@@ -8,6 +8,7 @@ use crate::client::ClientState;
 
 const NOT_FOUND_STR: &'static str = "Not found";
 
+#[allow(dead_code)]
 pub fn new_unimplemented_connection(state: Arc<ClientState>) -> AcceptFn {
 	gen_http_accept(state, Arc::new(move |state, req: Request| async move {
 		log::error!("unimplemented http request {:x?}", req);
